@@ -1,36 +1,10 @@
 services:
-#  winter-backend-cardano:
-#    build: .
-#    volumes:
-#      - .:/usr/src/app
-#    ports:
-#      - "4193:4000"
-#    env_file:
-#      - .env
-#    depends_on:
-#      - redis
-#      - db
-#    restart: always
-
-  redis:
-    image: redis:6.2-alpine
-    restart: always
-    ports:
-      - '6379:6379'
+  moria-backend:
+    build: .
     volumes:
-      - redis-data:/data
-    command: redis-server --save 60 1 --loglevel warning
-
-  db:
-    image: rapidfort/postgresql:16.0.0
+      - .:/usr/src/app
     ports:
-      - '5432:5432'
+      - "4000:4000"
     env_file:
       - .env
-    volumes:
-      - postgres-data:/bitnami/postgresql
     restart: always
-
-volumes:
-  redis-data:
-  postgres-data:
